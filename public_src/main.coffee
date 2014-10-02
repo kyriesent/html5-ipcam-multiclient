@@ -36,13 +36,10 @@ Stream = Backbone.Model.extend
 
 stream = new Stream
   port: 9999
-stream2 = new Stream
-  port: 9998
 
 streamsView = new StreamsView
   el: '#streams-view'
 streamsView.addStreamView stream
-streamsView.addStreamView stream2
 
 # multistream = Ember.Application.create()
 # multistream.ApplicationAdapter = DS.FixtureAdapter.extend();
