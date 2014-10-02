@@ -5,15 +5,30 @@
   <title>jsmpeg streaming</title>
   <style type="text/css">
     body {
-      background: #333;
-      text-align: center;
+      margin: 0;
+      background-color: #000
+    }
+    .bg {
+      background: url('/HIPSTER.jpg') no-repeat;
+      background-color: #fff;
+      background-size: contain;
+      background-position: center;
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      opacity: .2
     }
     .video-canvas {
       width: 33.33%;
     }
+    .grid-sizer {
+      width: 33.33%;
+      height: 100%;
+    }
   </style>
 </head>
 <body>
+  <div class='bg'></div>
   <!--
     <script type="text/x-handlebars" data-template-name="streams">
       <div id="videos">
@@ -37,6 +52,7 @@
     <script type="text/javascript" src="/main.js"></script>
   -->
   <div id="streams-view">
+    <div id='grid-sizer' class='grid-sizer'></div>
   </div>
   <script id="streams-template" type="text/x-handlebars" data-template-name="streams">
     <canvas id="video-canvas-{{id}}" class="video-canvas">
@@ -51,5 +67,6 @@
   <script src="/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="/handlebars-1.1.2.js"></script>
   <script src="/isotope.pkgd.min.js"></script>
+  <script src="/isotope-cells-by-row.js"></script>
   <script type="text/javascript" src="/main.js"></script>
 </body>

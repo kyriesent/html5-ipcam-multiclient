@@ -9,7 +9,9 @@ _.each streams, (streamConfig) ->
   console.log streamConfig
   videoStream = new VideoStream streamConfig
 
+streamIdCounter = 0
 streams = _.map streams, (stream) ->
+  stream.id = streamIdCounter++
   _.omit stream, 'streamUrl'
 
 runStaticHTMLServer = ->

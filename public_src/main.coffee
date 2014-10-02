@@ -10,12 +10,16 @@ StreamsView = Backbone.View.extend
   initialize: (options) ->
     @streamViews = []
   addStreamView: (stream) ->
+    return if @getStreamView(stream.id)?
     $stream = $('<div></div>')
     streamView = new StreamView
       el: $stream
       model: stream
     @$el.append streamView.$el
     @streamViews.push streamView
+  getStreamView: (id) ->
+    return _.find @streamViews, (streamView) ->
+      streamView.model.get('id') is id
 
 StreamView = Backbone.View.extend
   initialize: (options) ->
@@ -32,7 +36,6 @@ StreamView = Backbone.View.extend
 
 Stream = Backbone.Model.extend
   initialize: (attributes, options) ->
-    @set 'id', 1
     @set 'connected', false
     return @
 
@@ -44,12 +47,16 @@ dataSocket = io()
 dataSocket.on 'camera metadata', (streams) ->
   _.each streams, (streamConfig) ->
     stream = new Stream
+      id: streamConfig.id
       name: streamConfig.name
       port: streamConfig.wsPort
     streamsView.addStreamView stream
 
   iso = new Isotope '#streams-view', {
     itemSelector: '.video-canvas'
+    masonry: {
+      columnWidth: '.grid-sizer'
+    }
   }
 
 # multistream = Ember.Application.create()

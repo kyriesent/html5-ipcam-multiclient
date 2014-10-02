@@ -21,6 +21,9 @@ StreamsView = Backbone.View.extend({
   },
   addStreamView: function(stream) {
     var $stream, streamView;
+    if (this.getStreamView(stream.id) != null) {
+      return;
+    }
     $stream = $('<div></div>');
     streamView = new StreamView({
       el: $stream,
@@ -28,6 +31,11 @@ StreamsView = Backbone.View.extend({
     });
     this.$el.append(streamView.$el);
     return this.streamViews.push(streamView);
+  },
+  getStreamView: function(id) {
+    return _.find(this.streamViews, function(streamView) {
+      return streamView.model.get('id') === id;
+    });
   }
 });
 
@@ -53,7 +61,6 @@ StreamView = Backbone.View.extend({
 
 Stream = Backbone.Model.extend({
   initialize: function(attributes, options) {
-    this.set('id', 1);
     this.set('connected', false);
     return this;
   }
@@ -70,13 +77,17 @@ dataSocket.on('camera metadata', function(streams) {
   _.each(streams, function(streamConfig) {
     var stream;
     stream = new Stream({
+      id: streamConfig.id,
       name: streamConfig.name,
       port: streamConfig.wsPort
     });
     return streamsView.addStreamView(stream);
   });
   return iso = new Isotope('#streams-view', {
-    itemSelector: '.video-canvas'
+    itemSelector: '.video-canvas',
+    masonry: {
+      columnWidth: '.grid-sizer'
+    }
   });
 });
 
