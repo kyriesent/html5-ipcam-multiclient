@@ -12296,11 +12296,12 @@ return jQuery;
 var CameraClient;
 
 CameraClient = function(canvas, port) {
-  var client, ctx, player;
+  var client, ctx, player, wsUrl;
   ctx = canvas.getContext("2d");
   ctx.fillStyle = "#444";
   ctx.fillText("Loading...", canvas.width / 2 - 30, canvas.height / 3);
-  client = new WebSocket("ws:" + port + "/");
+  wsUrl = 'ws://' + location.host + ':' + port;
+  client = new WebSocket(wsUrl);
   player = new jsmpeg(client, {
     canvas: canvas
   });

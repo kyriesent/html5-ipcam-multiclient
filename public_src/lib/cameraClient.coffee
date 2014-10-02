@@ -4,7 +4,8 @@ CameraClient = (canvas, port) ->
   ctx.fillText "Loading...", canvas.width / 2 - 30, canvas.height / 3
 
   # Setup the WebSocket connection and start the player
-  client = new WebSocket("ws:#{port}/")
+  wsUrl = 'ws://' + location.host + ':' + port
+  client = new WebSocket(wsUrl)
   player = new jsmpeg(client,
     canvas: canvas
   )
