@@ -25,6 +25,9 @@
   "dependencies": {
     "jquery": "^2.1.1",
     "node-rstp-stream": "https://github.com/kyriesent/node-rstp-stream/tarball/master",
-    "node-static": "^0.7.6"
+    "node-static": "^0.7.6",
+    "socket.io": "^1.1.0",
+    "socket.io-client": "^1.1.0",
+    "underscore": "^1.7.0"
   }
 }

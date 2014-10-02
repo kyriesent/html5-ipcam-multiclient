@@ -1,6 +1,8 @@
 require './lib/jsmpeg.js'
 CameraClient = require './lib/cameraClient'
+io = require 'socket.io-client'
 Backbone = require 'backbone'
+_ = require 'underscore'
 $ = require 'jquery'
 Backbone.$ = $
 
@@ -34,12 +36,21 @@ Stream = Backbone.Model.extend
     @set 'connected', false
     return @
 
-stream = new Stream
-  port: 9999
-
 streamsView = new StreamsView
   el: '#streams-view'
-streamsView.addStreamView stream
+
+dataSocket = io()
+
+dataSocket.on 'camera metadata', (streams) ->
+  _.each streams, (streamConfig) ->
+    stream = new Stream
+      name: streamConfig.name
+      port: streamConfig.wsPort
+    streamsView.addStreamView stream
+
+  iso = new Isotope '#streams-view', {
+    itemSelector: '.video-canvas'
+  }
 
 # multistream = Ember.Application.create()
 # multistream.ApplicationAdapter = DS.FixtureAdapter.extend();
