@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "jquery": "^2.1.1",
-    "node-rstp-stream": "0.0.x",
+    "node-rstp-stream": "https://github.com/kyriesent/node-rstp-stream/tarball/master",
     "node-static": "^0.7.6"
   }
 }
