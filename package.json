@@ -1,0 +1,30 @@
+{
+  "name": "node-html5-livestream",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "node-html5-livestream"
+  },
+  "author": "David Jsa <david@jsa.me>",
+  "license": "MIT",
+  "devDependencies": {
+    "backbone": "^1.1.2",
+    "browserify": "^5.11.1",
+    "coffee-script": "^1.8.0",
+    "coffeeify": "^0.7.0",
+    "gulp": "^3.8.7",
+    "gulp-util": "^3.0.1",
+    "vinyl-source-stream": "^0.1.1",
+    "watchify": "^1.0.2"
+  },
+  "dependencies": {
+    "jquery": "^2.1.1",
+    "node-rstp-stream": "0.0.x",
+    "node-static": "^0.7.6"
+  }
+}
