@@ -1,0 +1,14 @@
+module.exports = {
+  streams: [
+    {
+      streamUrl: 'rtsp://user:password@127.0.0.1/videoMain', // if you're using a foscam, you'll need to point to /videoMain or the substream path
+      wsPort: 9999
+    },
+    {
+      streamUrl: 'rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov', // you can use this to test, should make a video show up in the browser
+      wsPort: 9998 // note that each port must be different
+    }/*, {
+      etc...
+    }*/
+  ]
+}
