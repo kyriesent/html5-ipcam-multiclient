@@ -2,7 +2,7 @@ module.exports = {
   streams: [
     {
       streamUrl: 'rtsp://user:password@127.0.0.1/videoMain', // if you're using a foscam, you'll need to point to /videoMain or the substream path
-      wsPort: 9999
+      wsPort: 9999 // the webSocket port that the video will be piped from the server to the client through
     },
     {
       streamUrl: 'rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov', // you can use this to test, should make a video show up in the browser
